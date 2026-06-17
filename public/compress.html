@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compress PDF | iLovePDF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl shadow-sm">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="/" class="flex items-center gap-3 text-slate-900">
+        <div class="rounded-3xl bg-red-600 px-4 py-2 text-sm font-black uppercase tracking-[0.3em] text-white">PDF</div>
+        <div>
+          <p class="text-xl font-black tracking-tight">iLove<span class="text-red-600">PDF</span></p>
+          <p class="text-xs text-slate-500">Compress PDFs online</p>
+        </div>
+      </a>
+      <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+        <a href="/" class="transition hover:text-red-600">Home</a>
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/image-to-pdf.html" class="transition hover:text-red-600">Image → PDF</a>
+        <a href="/auth/google" class="transition hover:text-red-600">Google Drive</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6 py-12">
+    <section class="rounded-[2rem] bg-white p-10 shadow-xl">
+      <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700">Compress PDF</span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-slate-900">Reduce your PDF size with one click.</h1>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-600">Upload a PDF and compress it instantly. Download the optimized file with minimal quality loss.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/merge.html" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-red-600 hover:text-red-600">Merge next</a>
+            <a href="/split.html" class="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 transition">Split PDFs</a>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-slate-50 p-6 shadow-sm">
+          <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Compress tool</p>
+          <div class="mt-6 space-y-4">
+            <label class="block text-sm font-medium text-slate-700">Select a PDF file</label>
+            <input id="compress-file" type="file" accept=".pdf" class="block w-full rounded-3xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm" />
+            <button id="compress-button" disabled class="w-full rounded-full bg-slate-300 px-6 py-4 text-base font-semibold text-white transition">Compress PDF</button>
+            <p id="compress-status" class="text-sm text-slate-500"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 iLovePDF. Compress PDFs online.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/" class="transition hover:text-red-600">Home</a>
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/image-to-pdf.html" class="transition hover:text-red-600">Image → PDF</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const compressInput = document.getElementById('compress-file');
+    const compressButton = document.getElementById('compress-button');
+    const compressStatus = document.getElementById('compress-status');
+
+    compressInput.addEventListener('change', () => {
+      compressButton.disabled = !compressInput.files.length;
+      compressButton.classList.toggle('bg-red-600', compressInput.files.length > 0);
+      compressButton.classList.toggle('bg-slate-300', !compressInput.files.length);
+    });
+
+    compressButton.addEventListener('click', async () => {
+      if (!compressInput.files.length) return;
+      compressStatus.textContent = 'Compressing file...';
+      const form = new FormData();
+      form.append('file', compressInput.files[0]);
+
+      try {
+        const response = await fetch('/api/pdf/compress', { method: 'POST', body: form });
+        if (!response.ok) {
+          const error = await response.json().catch(() => null);
+          throw new Error(error?.error || 'Compression failed.');
+        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'compressed_ilovepdf.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        compressStatus.textContent = 'Download started.';
+      } catch (err) {
+        compressStatus.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>

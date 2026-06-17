@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Drive | iLovePDF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl shadow-sm">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="/" class="flex items-center gap-3 text-slate-900">
+        <div class="rounded-3xl bg-red-600 px-4 py-2 text-sm font-black uppercase tracking-[0.3em] text-white">PDF</div>
+        <div>
+          <p class="text-xl font-black tracking-tight">iLove<span class="text-red-600">PDF</span></p>
+          <p class="text-xs text-slate-500">Google Drive integration</p>
+        </div>
+      </a>
+      <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+        <a href="/" class="transition hover:text-red-600">Home</a>
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/compress.html" class="transition hover:text-red-600">Compress</a>
+        <a href="/image-to-pdf.html" class="transition hover:text-red-600">Image → PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6 py-12">
+    <section class="rounded-[2rem] bg-white p-10 shadow-xl">
+      <div class="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700">Google Drive</span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-slate-900">Import files directly from Google Drive.</h1>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-600">Connect your Google Drive account and pull PDF documents into iLovePDF for merging, splitting, compression, or conversion.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/merge.html" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-red-600 hover:text-red-600">Merge with Drive</a>
+            <a href="/" class="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 transition">Back to home</a>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-slate-50 p-6 shadow-sm">
+          <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Google Drive Access</p>
+          <div class="mt-6 space-y-4">
+            <p class="text-slate-700">Click below to authorize access to your Google Drive files. After signing in, use the upload controls on any tool page to work with Drive documents.</p>
+            <a href="/auth/google" class="inline-flex w-full items-center justify-center rounded-full bg-red-600 px-6 py-4 text-sm font-semibold text-white shadow hover:bg-red-700 transition">Authorize Google Drive</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

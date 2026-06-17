@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iLovePDF — Merge, split, compress & convert PDFs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.14), transparent 22%),
+                  radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.14), transparent 20%),
+                  #f8fafc;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+    }
+  </style>
+</head>
+<body class="text-slate-900 selection:bg-red-100 selection:text-red-900">
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl shadow-sm">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/img/logos/logo.svg" alt="iLovePDF" class="h-10 w-10" />
+        <div>
+          <p class="text-xl font-black tracking-tight">iLove<span class="text-red-600">PDF</span></p>
+          <p class="text-xs text-slate-500">Your complete PDF toolkit</p>
+        </div>
+      </a>
+      <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/compress.html" class="transition hover:text-red-600">Compress</a>
+        <a href="/image-to-pdf.html" class="transition hover:text-red-600">Image → PDF</a>
+        <a href="/google-drive.html" class="transition hover:text-red-600">Google Drive</a>
+        <button onclick="location.href='/merge.html'" class="rounded-full bg-red-600 px-4 py-2 text-white shadow hover:bg-red-700 transition">Start now</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-6 py-12">
+    <section class="grid gap-12 xl:grid-cols-[1.2fr_0.85fr] xl:items-center">
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700">All your PDF tools in one place</div>
+        <h1 class="max-w-3xl text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">Merge, split, compress and convert PDFs instantly.</h1>
+        <p class="max-w-2xl text-lg leading-8 text-slate-600">A clean PDF workflow for web users: upload files, choose a tool, and download the result immediately. Includes PDF conversion, Google Drive import, and premium checkout.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/merge.html" class="rounded-full bg-red-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-red-200 transition hover:bg-red-700">Merge PDFs</a>
+          <a href="/split.html" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 transition hover:border-red-600 hover:text-red-600">Split PDFs</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl bg-white p-5 text-center shadow-sm">
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Secure</p>
+            <p class="mt-3 text-2xl font-bold text-slate-900">AES-256</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5 text-center shadow-sm">
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Fast</p>
+            <p class="mt-3 text-2xl font-bold text-slate-900">Instant</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5 text-center shadow-sm">
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Easy</p>
+            <p class="mt-3 text-2xl font-bold text-slate-900">No install</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5 text-center shadow-sm">
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Modern</p>
+            <p class="mt-3 text-2xl font-bold text-slate-900">Responsive</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-[2rem] bg-gradient-to-br from-red-600 via-orange-500 to-red-700 p-0.5 shadow-2xl">
+        <div class="rounded-[1.75rem] bg-slate-950/95 p-8 text-white shadow-2xl ring-1 ring-white/10">
+          <div class="space-y-5">
+            <div class="inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md">
+              <span class="h-2.5 w-2.5 rounded-full bg-green-300"></span>
+              Trusted PDF tools for everyday work
+            </div>
+            <h2 class="text-3xl font-bold">Everything you need for PDF document management.</h2>
+            <p class="text-slate-300">From file conversion to page extraction, the site supports the core tools you expect from the official service.</p>
+          </div>
+          <div class="mt-6">
+            <img src="/img/hero/hero-illustration.svg" alt="Hero illustration" class="w-full h-auto rounded-lg shadow-inner" />
+          </div>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-3xl bg-white/10 p-5 shadow-lg shadow-black/10 ring-1 ring-white/10">
+              <p class="text-sm uppercase tracking-[0.24em] text-red-300">Merge</p>
+              <p class="mt-3 text-lg font-semibold text-white">Combine PDFs into one file.</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 shadow-lg shadow-black/10 ring-1 ring-white/10">
+              <p class="text-sm uppercase tracking-[0.24em] text-red-300">Compress</p>
+              <p class="mt-3 text-lg font-semibold text-white">Make PDFs smaller quickly.</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 shadow-lg shadow-black/10 ring-1 ring-white/10">
+              <p class="text-sm uppercase tracking-[0.24em] text-red-300">Split</p>
+              <p class="mt-3 text-lg font-semibold text-white">Turn PDF pages into separate files.</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 shadow-lg shadow-black/10 ring-1 ring-white/10">
+              <p class="text-sm uppercase tracking-[0.24em] text-red-300">Image → PDF</p>
+              <p class="mt-3 text-lg font-semibold text-white">Convert JPG/PNG to PDF.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Tools</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-900">Explore the full PDF toolset</h2>
+        </div>
+        <a href="/google-drive.html" class="inline-flex rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 transition">Connect Google Drive</a>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="/merge.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl flex items-start gap-4">
+          <img src="/img/icons/merge.svg" alt="Merge" class="h-12 w-12 flex-none" />
+          <div>
+            <p class="text-sm uppercase tracking-[0.24em] text-red-600">Merge PDF</p>
+            <h3 class="mt-3 text-xl font-semibold text-slate-900">Combine PDFs</h3>
+            <p class="mt-2 text-sm text-slate-600">Upload multiple files and merge them in one click.</p>
+          </div>
+        </a>
+        <a href="/split.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl flex items-start gap-4">
+          <img src="/img/icons/split.svg" alt="Split" class="h-12 w-12 flex-none" />
+          <div>
+            <p class="text-sm uppercase tracking-[0.24em] text-red-600">Split PDF</p>
+            <h3 class="mt-3 text-xl font-semibold text-slate-900">Extract pages</h3>
+            <p class="mt-2 text-sm text-slate-600">Download single pages from a PDF as separate files.</p>
+          </div>
+        </a>
+        <a href="/compress.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl flex items-start gap-4">
+          <img src="/img/icons/compress.svg" alt="Compress" class="h-12 w-12 flex-none" />
+          <div>
+            <p class="text-sm uppercase tracking-[0.24em] text-red-600">Compress PDF</p>
+            <h3 class="mt-3 text-xl font-semibold text-slate-900">Reduce size</h3>
+            <p class="mt-2 text-sm text-slate-600">Optimize PDFs while preserving readability.</p>
+          </div>
+        </a>
+        <a href="/image-to-pdf.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Image → PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Convert images</h3>
+          <p class="mt-2 text-sm text-slate-600">Create a PDF from JPG or PNG files.</p>
+        </a>
+        <a href="/word-to-pdf.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Word → PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Doc to PDF</h3>
+          <p class="mt-2 text-sm text-slate-600">Convert Word documents to PDF format.</p>
+        </a>
+        <a href="/excel-to-pdf.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Excel → PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Sheet to PDF</h3>
+          <p class="mt-2 text-sm text-slate-600">Export spreadsheets to PDF documents.</p>
+        </a>
+        <a href="/powerpoint-to-pdf.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">PowerPoint → PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Slides to PDF</h3>
+          <p class="mt-2 text-sm text-slate-600">Convert presentations into PDF files.</p>
+        </a>
+        <a href="/pdf-to-word.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">PDF → Word</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">PDF to Word</h3>
+          <p class="mt-2 text-sm text-slate-600">Extract editable text from PDFs.</p>
+        </a>
+        <a href="/pdf-to-jpg.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">PDF → JPG</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">PDF to JPG</h3>
+          <p class="mt-2 text-sm text-slate-600">Export PDF pages as JPG images.</p>
+        </a>
+        <a href="/unlock.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Unlock PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Unlock PDF</h3>
+          <p class="mt-2 text-sm text-slate-600">Remove PDF security restrictions.</p>
+        </a>
+        <a href="/protect.html" class="card-hover rounded-[1.75rem] bg-white p-6 shadow-sm transition hover:shadow-xl">
+          <p class="text-sm uppercase tracking-[0.24em] text-red-600">Protect PDF</p>
+          <h3 class="mt-3 text-xl font-semibold text-slate-900">Protect PDF</h3>
+          <p class="mt-2 text-sm text-slate-600">Add a password to your PDF.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 iLovePDF. All tools included.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/merge.html" class="hover:text-red-600 transition">Merge</a>
+        <a href="/split.html" class="hover:text-red-600 transition">Split</a>
+        <a href="/compress.html" class="hover:text-red-600 transition">Compress</a>
+        <a href="/image-to-pdf.html" class="hover:text-red-600 transition">Image → PDF</a>
+        <a href="/google-drive.html" class="hover:text-red-600 transition">Google Drive</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

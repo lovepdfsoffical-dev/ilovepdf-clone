@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image to PDF | iLovePDF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl shadow-sm">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="/" class="flex items-center gap-3 text-slate-900">
+        <div class="rounded-3xl bg-red-600 px-4 py-2 text-sm font-black uppercase tracking-[0.3em] text-white">PDF</div>
+        <div>
+          <p class="text-xl font-black tracking-tight">iLove<span class="text-red-600">PDF</span></p>
+          <p class="text-xs text-slate-500">Convert images to PDF</p>
+        </div>
+      </a>
+      <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+        <a href="/" class="transition hover:text-red-600">Home</a>
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/compress.html" class="transition hover:text-red-600">Compress</a>
+        <a href="/auth/google" class="transition hover:text-red-600">Google Drive</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6 py-12">
+    <section class="rounded-[2rem] bg-white p-10 shadow-xl">
+      <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700">Image to PDF</span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-slate-900">Convert JPG or PNG images into a PDF.</h1>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-600">Upload one or more images and receive a single PDF file containing all selected pages.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/merge.html" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-red-600 hover:text-red-600">Merge PDFs</a>
+            <a href="/compress.html" class="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 transition">Compress PDFs</a>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-slate-50 p-6 shadow-sm">
+          <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Image to PDF tool</p>
+          <div class="mt-6 space-y-4">
+            <label class="block text-sm font-medium text-slate-700">Upload images</label>
+            <input id="image-file" type="file" accept="image/png,image/jpeg" multiple class="block w-full rounded-3xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm" />
+            <button id="image-button" disabled class="w-full rounded-full bg-slate-300 px-6 py-4 text-base font-semibold text-white transition">Convert to PDF</button>
+            <p id="image-status" class="text-sm text-slate-500"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 iLovePDF. Convert images to PDF.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/" class="transition hover:text-red-600">Home</a>
+        <a href="/merge.html" class="transition hover:text-red-600">Merge</a>
+        <a href="/split.html" class="transition hover:text-red-600">Split</a>
+        <a href="/compress.html" class="transition hover:text-red-600">Compress</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const imageInput = document.getElementById('image-file');
+    const imageButton = document.getElementById('image-button');
+    const imageStatus = document.getElementById('image-status');
+
+    imageInput.addEventListener('change', () => {
+      imageButton.disabled = !imageInput.files.length;
+      imageButton.classList.toggle('bg-red-600', imageInput.files.length > 0);
+      imageButton.classList.toggle('bg-slate-300', !imageInput.files.length);
+    });
+
+    imageButton.addEventListener('click', async () => {
+      if (!imageInput.files.length) return;
+      imageStatus.textContent = 'Converting images...';
+      const form = new FormData();
+      Array.from(imageInput.files).forEach(file => form.append('files', file));
+
+      try {
+        const response = await fetch('/api/pdf/image-to-pdf', { method: 'POST', body: form });
+        if (!response.ok) {
+          const error = await response.json().catch(() => null);
+          throw new Error(error?.error || 'Conversion failed.');
+        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'converted_images.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        imageStatus.textContent = 'Download started.';
+      } catch (err) {
+        imageStatus.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>
